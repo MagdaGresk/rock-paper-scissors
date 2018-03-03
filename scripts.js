@@ -42,7 +42,6 @@ function setGameElements() {
 			newGameElem.style.display = 'block';
 	        pickElem.style.display = 'none';
 	        resultsTable.style.display = 'none';
-	        playerWelcome.style.display = 'block';
 	}
 }
 
@@ -112,11 +111,15 @@ function checkRoundWinner (playerPick, computerPick) {
 
     if (winnerIs == 'player') {
     	playerResultElem.innerText = 'Win!';
-    	++player.score;
+    	player.score++;
     }
     else if (winnerIs == 'computer') {
     	computerResultElem.innerText = 'Win!';
-    	++computer.score;
+    	computer.score++;
+    }
+    else {
+    	computerResultElem.innerText = 'Draw!';
+    	playerResultElem.innerText = 'Draw!';
     }
 
 }
@@ -126,6 +129,7 @@ function checkRoundWinner (playerPick, computerPick) {
 function setGamePoints() {
     playerPointsElem.innerText = player.score;
     computerPointsElem.innerText = computer.score;
+    console.log(player.score, computer.score);
 }
 
 // KONIEC
@@ -134,9 +138,12 @@ function endGame() {
 	if (player.score == 10) {
 		alert('Wygrywasz')
 		gameState = 'ended';
+		computer.score = player.score = 0;
 	}
 	else if (computer.score == 10) {
 		alert('Komputer wygrał')
 		gameState = 'ended';
+		computer.score = player.score = 0;
 	}
+	setGamePoints();
 }
