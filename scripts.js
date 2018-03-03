@@ -87,8 +87,8 @@ function playerPick(playerPick) {
 	playerPickElem.innerHTML = playerPick;
 	computerPickElem.innerHTML = computerPick;
 	checkRoundWinner(playerPick, computerPick);
-	setGamePoints();
 	endGame();
+	setGamePoints();
 	setGameElements();
 }
 
@@ -139,11 +139,21 @@ function endGame() {
 		alert('Wygrywasz')
 		gameState = 'ended';
 		computer.score = player.score = 0;
+		playerResultElem.innerHTML = 'Player score';
+		computerResultElem.innerHTML = 'Computer score';
+		playerPickElem.innerHTML = 'Player Selection';
+		computerPickElem.innerHTML = 'Computer Score';
+
 	}
 	else if (computer.score == 10) {
 		alert('Komputer wygrał')
 		gameState = 'ended';
 		computer.score = player.score = 0;
+		playerResultElem.innerHTML = 'Player Score';
+		computerResultElem.innerHTML = 'Computer Score';
+		playerPickElem.innerHTML = 'Player Selection';
+		computerPickElem.innerHTML = 'Computer Selection';
+
 	}
 	setGamePoints();
 }
